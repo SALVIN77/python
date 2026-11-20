@@ -1,0 +1,27 @@
+import csv
+
+# Create a dictionary
+data = [
+    {"Name": "Anu", "Age": 20, "Department": "CSE"},
+    {"Name": "Rahul", "Age": 21, "Department": "ECE"},
+    {"Name": "Meera", "Age": 20, "Department": "IT"}
+]
+
+# Write dictionary data into CSV file
+with open("students.csv", "w", newline="") as file:
+    fieldnames = ["Name", "Age", "Department"]
+
+    writer = csv.DictWriter(file, fieldnames=fieldnames)
+
+    writer.writeheader()
+    writer.writerows(data)
+
+print("Data written successfully!")
+
+# Read the CSV file
+with open("students.csv", "r") as file:
+    reader = csv.DictReader(file)
+
+    print("\nContents of CSV file:")
+    for row in reader:
+        print(row)
